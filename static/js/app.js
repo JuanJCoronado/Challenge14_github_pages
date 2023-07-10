@@ -64,15 +64,16 @@ function buildCharts(sample){
 
         // -----------------Demographics table--------------------
         
-        let Samples3 = d.metadata
-        Samples_filtered2 = Samples3.filter(d4 => d4.id == sample)
-        d3
-        .select('#sample-metadata')
-        .selectAll('p')
-        .data(Samples_filtered2)
-        .enter()
-        .append('p')
-        .text(d => d.id)
+        let Samples3 = d.metadata;
+        Samples_filtered2 = Samples3.filter(d4 => d4.id == sample);
+        
+        const metadataDiv = d3.select('#sample-metadata');
+        
+        metadataDiv.selectAll('p')
+          .data(Samples_filtered2)
+          .enter()
+          .append('p')
+          .text(d => `ID: ${d.id}, Ethnicity: ${d.ethnicity}, Gender: ${d.gender}, Age: ${d.age}, Location: ${d.location}, BBType: ${d.bbtype}, WFreq: ${d.wfreq}`);
     }) 
 }
 
